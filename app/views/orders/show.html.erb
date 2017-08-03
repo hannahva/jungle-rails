@@ -4,10 +4,8 @@
     <h1>Order #<%= @order.id %></h1>
   </header>
 
-
-
   <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
+    <h4>Thank you for your order <%= @order.email %>!</h4>
     <div class="panel panel-default items">
       <table class="table table-bordered">
         <thead>
@@ -19,9 +17,8 @@
           </tr>
         </thead>
         <tbody>
-          <% @total_cents = 0 %>
-          <% cart.each do |product_id, details| %>
-            <%= render 'item', product_id: product_id, details: details %>
+          <% @order.line_items.each do |line_item| %>
+            <%= render 'item', line_item: line_item %>
           <% end %>
         </tbody>
         <tfoot>
@@ -30,7 +27,7 @@
               TOTAL:
             </th>
             <th>
-              <%= @total_cents %>
+              <%= @order.total %>
             </th>
           </tr>
         </tfoot>
