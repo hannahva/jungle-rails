@@ -18,6 +18,10 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
+  def update
+    @product = Product.find(params[:id])
+  end
+
   def destroy
     @product = Product.find params[:id]
     @product.destroy
