@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     delete :remove_item
   end
 
-  resource :sessions, only: [:new, :create, :destroy]
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 
   resources :users, only: [:new, :create]
 
