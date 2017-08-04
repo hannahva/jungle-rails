@@ -25,6 +25,21 @@
         </dl>
       </div>
     </div>
+    <div class="row">
+    <dl class="dl-vertical">
+    <% @product.reviews.each do |review| %>
+      <div class="review">
+        <dt>Reviewer</dt>
+        <dd><%= review.user.email %></dd>
+        <dt>Rating</dt>
+        <dd><%= review.rating %></dd>
+        <dt>Review</dt>
+        <dd><%= review.description %></dd>
+      </div>
+      <br>
+    <% end %>
+    </dl>
+    </div>
 
   </article>
 
