@@ -26,17 +26,15 @@
       </div>
     </div>
     <div class="row">
-    <dl class="dl-vertical">
+    <dl class="dl-horizontal">
     <% @product.reviews.each do |review| %>
-      <div class="review">
-        <dt>Reviewer</dt>
-        <dd><%= review.user.email %></dd>
+      <div class="review col-sm-12">
+        <dt><%= review.user.email %> thinks: </dt>
+        <dd><%= review.description %></dd>
         <dt>Rating</dt>
         <dd><%= review.rating %></dd>
-        <dt>Review</dt>
-        <dd><%= review.description %></dd>
       </div>
-      <br>
+
     <% end %>
     </dl>
     </div>
