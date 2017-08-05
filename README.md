@@ -1,6 +1,23 @@
 # Jungle
 
-A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
+A mini e-commerce application built during week 6 of Lighthouse Labs' 8-week Web Development Bootcamp. Introduced as an unfamiliar existing code-base with feature requests and bug fixes, to learn to navigate the Rails 4.2 framework.
+
+## Jungle in Action
+![login](https://raw.githubusercontent.com/hannahva/jungle-rails/f7f42426488072df1d2e09447e2498cb2f0f2da2/docs/login.png)
+![category menu](https://raw.githubusercontent.com/hannahva/jungle-rails/f7f42426488072df1d2e09447e2498cb2f0f2da2/docs/category%20menu.png)
+![category view](https://raw.githubusercontent.com/hannahva/jungle-rails/f7f42426488072df1d2e09447e2498cb2f0f2da2/docs/category%20view.png)
+![product view](https://raw.githubusercontent.com/hannahva/jungle-rails/f7f42426488072df1d2e09447e2498cb2f0f2da2/docs/logged-in%20review.png)
+![cart view](https://raw.githubusercontent.com/hannahva/jungle-rails/f7f42426488072df1d2e09447e2498cb2f0f2da2/docs/cart%20view.png)
+![order view](https://raw.githubusercontent.com/hannahva/jungle-rails/f7f42426488072df1d2e09447e2498cb2f0f2da2/docs/order%20page.png)
+![admin menu](https://raw.githubusercontent.com/hannahva/jungle-rails/f7f42426488072df1d2e09447e2498cb2f0f2da2/docs/admin%20menu.png)
+![admin products view](https://raw.githubusercontent.com/hannahva/jungle-rails/f7f42426488072df1d2e09447e2498cb2f0f2da2/docs/admin%20products.png)
+![admin category view](https://raw.githubusercontent.com/hannahva/jungle-rails/f7f42426488072df1d2e09447e2498cb2f0f2da2/docs/admin%20categories.png)
+![logged out product view](https://raw.githubusercontent.com/hannahva/jungle-rails/f7f42426488072df1d2e09447e2498cb2f0f2da2/docs/logged-out%20review.png)
+![empty cart](https://raw.githubusercontent.com/hannahva/jungle-rails/f7f42426488072df1d2e09447e2498cb2f0f2da2/docs/empty%20cart%20.png)
+![sold out badge](https://raw.githubusercontent.com/hannahva/jungle-rails/f7f42426488072df1d2e09447e2498cb2f0f2da2/docs/sold%20out%20badge.png)
+
+
+
 
 
 ## Setup
@@ -20,6 +37,11 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 Use Credit Card # 4111 1111 1111 1111 for testing success scenarios.
 
 More information in their docs: <https://stripe.com/docs/testing#cards>
+##Stack
+
+ - Ruby
+ - Rails
+ - CSS using Sass pre-processor
 
 ## Dependencies
 
