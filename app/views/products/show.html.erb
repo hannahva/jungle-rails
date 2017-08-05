@@ -25,33 +25,38 @@
         </dl>
       </div>
     </div>
-    <div class="col-sm-6 col-sm-offset-1">
-      <%= form_for [@product, Review.new] do |form| %>
+    <% if current_user %>
+      <div class="col-sm-6 col-sm-offset-1">
+        <%= form_for [@product, Review.new] do |form| %>
 
-        <% if form.object.errors.any? %>
-          <div class="alert alert-danger">
-            <strong>The following errors prevented saving:</strong>
-            <ul>
-              <% form.object.errors.full_messages.each do |error| %>
-                <li><%= error %></li>
-              <% end %>
-            </ul>
+          <% if form.object.errors.any? %>
+            <div class="alert alert-danger">
+              <strong>The following errors prevented saving:</strong>
+              <ul>
+                <% form.object.errors.full_messages.each do |error| %>
+                  <li><%= error %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="form-group">
+            <%= form.label :description %>
+            <%= form.text_area :description, class: 'form-control' %>
           </div>
-        <% end %>
 
-        <div class="form-group">
-          <%= form.label :description %>
-          <%= form.text_area :description, class: 'form-control' %>
-        </div>
+          <div class="form-group">
+            <%= form.label :rating %>
+            <%= form.select :rating, [1, 2, 3, 4, 5] %>
+          </div>
 
-        <div class="form-group">
-          <%= form.label :rating %>
-          <%= form.select :rating, [1, 2, 3, 4, 5] %>
-        </div>
+          <%= form.submit 'Add Review', class: 'btn btn-primary' %>
+          <% end %>
+   <% else %>
+      <h1>Please <%= link_to 'Login', '/login' %> to Leave a Review</h1>
+      </div>
+   <% end %>
 
-        <%= form.submit 'Add Review', class: 'btn btn-primary' %>
-      <% end %>
-    </div>
 
     <div class="row">
     <dl class="dl-horizontal">
@@ -61,11 +66,16 @@
         <dd><%= review.description %></dd>
         <dt>Rating</dt>
         <dd><%= review.rating %></dd>
+        <% if current_user && review.user_id == current_user.id %>
+        <%= form_for [@product, review], { action: :delete, method: :delete } do |form| %>
+          <%= form.submit 'Delete Review', class: 'btn btn-danger' %>
+        <% end %>
+       <% end %>
       </div>
 
-    <% end %>
     </dl>
     </div>
+  <% end %>
 
   </article>
 
