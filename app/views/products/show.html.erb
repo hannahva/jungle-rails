@@ -66,7 +66,7 @@
         <dt><%= review.user.email %> thinks: </dt>
         <dd><%= review.description %></dd>
         <dt>Rating</dt>
-        <dd><%= review.rating %></dd>
+        <dd><%= review.rating %>/5</dd>
         <% if current_user && review.user_id == current_user.id %>
         <%= form_for [@product, review], { action: :delete, method: :delete } do |form| %>
           <%= form.submit 'Delete Review', class: 'btn btn-danger delete' %>

@@ -17,8 +17,8 @@ class OrdersController < ApplicationController
       redirect_to cart_path, error: order.errors.full_messages.first
     end
 
-  rescue Stripe::CardError => e
-    redirect_to cart_path, error: e.message
+    rescue Stripe::CardError => e
+      redirect_to cart_path, error: e.message
   end
 
   private
@@ -68,5 +68,4 @@ class OrdersController < ApplicationController
     end
     total
   end
-
 end

@@ -14,7 +14,6 @@ class UsersController < ApplicationController
     else
       render :new, notice: "Something went wrong :("
     end
-
   end
 
   private
@@ -28,5 +27,4 @@ class UsersController < ApplicationController
       :password_confirmation
       )
   end
-
 end
