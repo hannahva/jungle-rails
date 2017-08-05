@@ -55,7 +55,7 @@
 
     <div class="row">
     <dl class="dl-horizontal">
-    <% @product.reviews.each do |review| %>
+    <% @product.reviews.order(created_at: :desc).each do |review| %>
       <div class="review col-sm-12">
         <dt><%= review.user.email %> thinks: </dt>
         <dd><%= review.description %></dd>
