@@ -97,6 +97,16 @@ RSpec.describe User, type: :model do
       expect(@user).to_not be_valid
       expect(@user.errors.full_messages).to eql ["Email has already been taken"]
     end
-
+  end
+  describe '.authenticate_with_credentials' do
+    it 'should be valid if passed valid fields'do
+      @user = User.create!(first_name: "first-name",
+                   last_name: "last-name",
+                   email: "test@test.com",
+                   password: "password",
+                   password_confirmation: "password"
+                   )
+      expect(@user.authenticate_with_credentials("test@test.com", "password")).to eql @user
+    end
   end
 end
