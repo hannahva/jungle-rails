@@ -99,7 +99,7 @@ RSpec.describe User, type: :model do
     end
   end
   describe '.authenticate_with_credentials' do
-    it 'should be valid if passed valid fields'do
+    it 'should authenticate if passed valid fields'do
       @user = User.create!(first_name: "first-name",
                    last_name: "last-name",
                    email: "test@test.com",
@@ -107,6 +107,14 @@ RSpec.describe User, type: :model do
                    password_confirmation: "password"
                    )
       expect(@user.authenticate_with_credentials("test@test.com", "password")).to eql @user
+    end
+    it 'should not authenticate if passed in invalid email' do
+      @user = User.create!(first_name: "first-name",
+                           last_name: "last-name",
+                           email: "test@test.com",
+                           password: "password",
+                           password_confirmation: "password")
+      expect(@user.authenticate_with_credentials("wrong@test.com", "password")).to_not eql @user
     end
   end
 end
