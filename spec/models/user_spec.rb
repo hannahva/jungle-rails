@@ -110,6 +110,7 @@ RSpec.describe User, type: :model do
       @user = User.find_by_email("test2@test.com")
       expect(User.authenticate_with_credentials("test2@test.com", "password")).to eql @user
       expect(User.authenticate_with_credentials("   test2@test.com", "password")).to eql @user
+      expect(User.authenticate_with_credentials("TESt2@test.COM", "password")).to eql @user
     end
     it 'should not authenticate if passed in invalid email' do
       expect(User.authenticate_with_credentials("wrong@test.com", "password")).to eql nil
