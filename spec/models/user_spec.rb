@@ -84,13 +84,13 @@ RSpec.describe User, type: :model do
     it 'is not valid if email is not unique' do
       User.create!(first_name: "first-name",
                    last_name: "last-name",
-                   email: "TEST@test.com",
+                   email: "TEST1@test.com",
                    password: "password",
                    password_confirmation: "password"
                    )
       @user = User.new(first_name: "first-name",
                        last_name: "last-name",
-                       email: "test@test.com",
+                       email: "test1@test.com",
                        password: "password",
                        password_confirmation: "password"
                        )
@@ -99,22 +99,23 @@ RSpec.describe User, type: :model do
     end
   end
   describe '.authenticate_with_credentials' do
-    it 'should authenticate if passed valid fields'do
-      @user = User.create!(first_name: "first-name",
+    User.find_by_email("test2@test.com").destroy
+    User.create!(first_name: "first-name",
                    last_name: "last-name",
-                   email: "test@test.com",
+                   email: "test2@test.com",
                    password: "password",
                    password_confirmation: "password"
                    )
-      expect(@user.authenticate_with_credentials("test@test.com", "password")).to eql @user
+    it 'should authenticate if passed valid fields'do
+      @user = User.find_by_email("test2@test.com")
+      expect(User.authenticate_with_credentials("test2@test.com", "password")).to eql @user
+      expect(User.authenticate_with_credentials("   test2@test.com", "password")).to eql @user
     end
     it 'should not authenticate if passed in invalid email' do
-      @user = User.create!(first_name: "first-name",
-                           last_name: "last-name",
-                           email: "test@test.com",
-                           password: "password",
-                           password_confirmation: "password")
-      expect(@user.authenticate_with_credentials("wrong@test.com", "password")).to_not eql @user
+      expect(User.authenticate_with_credentials("wrong@test.com", "password")).to eql nil
+    end
+    it 'should not authenticate if passed invalid password' do
+      expect(User.authenticate_with_credentials("test2@test.com", "wordpass")).to eql nil
     end
   end
 end
