@@ -4,7 +4,7 @@ RSpec.feature "users can navigate from home to productdetail by clicking on prod
   before :each do
     @category = Category.create! name: 'Apparel'
 
-    10.times do |n|
+    1.times do |n|
       @category.products.create!(
         name: Faker::Hipster.sentence(3),
         description: Faker::Hipster.paragraph(4),
@@ -14,11 +14,21 @@ RSpec.feature "users can navigate from home to productdetail by clicking on prod
         )
     end
   end
-  scenario "they see all products" do
+  scenario "they see all products on homepage and click the details button" do
     visit root_path
-    expect(page).to have_css '.article-product', count: 10
-  end
-  scenario "they click on a product detail" do
 
+    expect(page).to have_css "article.product", count: 1
+    click_on("Details")
+
+    expect(page).to have_css "article.product-detail"
+  end
+  scenario "they see all products on homepage and click the product header" do
+    visit root_path
+
+    expect(page).to have_css "article.product", count: 1
+    within("header.product-detail-link") do
+      find(".product-link").click
+    end
+    expect(page).to have_css "article.product-detail"
   end
 end
