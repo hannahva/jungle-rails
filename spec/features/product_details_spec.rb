@@ -14,7 +14,7 @@ RSpec.feature "users can navigate from home to productdetail by clicking on prod
         )
     end
   end
-  scenario "they see all products on homepage and click the details button" do
+  scenario "see all products on homepage and click the details button of product" do
     visit root_path
 
     expect(page).to have_css "article.product", count: 1
@@ -22,7 +22,7 @@ RSpec.feature "users can navigate from home to productdetail by clicking on prod
 
     expect(page).to have_css "article.product-detail"
   end
-  scenario "they see all products on homepage and click the product header" do
+  scenario "see all products on homepage and click the product header of product" do
     visit root_path
 
     expect(page).to have_css "article.product", count: 1
