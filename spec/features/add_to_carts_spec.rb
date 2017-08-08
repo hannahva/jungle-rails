@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "AddToCarts", type: :feature do
+RSpec.feature "adding items to cart increases cart size by adding that product", type: :feature, js: true do
   before :each do
     @category = Category.create! name: 'Apparel'
 
@@ -14,6 +14,12 @@ RSpec.feature "AddToCarts", type: :feature do
         )
     end
   end
-  scenario "" do
+  scenario "user clicks on add button, cart size increases" do
+    visit root_path
+    expect(page).to have_css "article.product", count: 1
+
+    click_on("Add")
+
+    expect(page).to have_content 'My Cart (1)'
   end
 end
